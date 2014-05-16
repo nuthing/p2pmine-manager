@@ -1,0 +1,69 @@
+Created for http://p2pmine.com
+
+Warning, this code is horrible and I know that. I've been having trouble focusing lately
+and coding was my favorite way to get things done. As you can tell, the code is pieced
+together like a puzzle. I've got some crazy stuff I'd like to do with this code, so
+hopefully I can get it into the hands of the people to make better. :)
+
+
+To start things off, we might need a litle organization. How about, a LIST?
+Hrm...what kind of list.
+Let's make it... like this..
+
+Table of Contents:
+ []> Madness
+ []> Table of Me lol &slap## ((*cough*)Contents
+ []> Some things to do about the project, I dunno...
+
+Okay, well that didn't work. Let's just start by saying.
+
+
+Ubuntu 12.04 LTS
+
+Yeah, that should be obvious to anyone scrolling through the messed up words. So, why not use
+14.04 LTS? I dunno, it doesn't work. Try it, create a tissue (tissue? issue? comment?) reply..
+So, with Ubuntu 12.04 I used a little bit of MySQL and PHP magic wizard skills and created...
+THIS.
+I mean, the other pages.
+My vision is to add some features, let's see what we can do.
+[~_++++]
+{}> CronJobs
+  {.}> Watchdog (auto-start)
+  {.}> Cache Clear (auto-reinstall after N of shares to keep services fast)
+{}> fix checker 
+{}> actually check the GET/POST inputs instead of just using them. (i know people, calm down. I just needed the main processes coded)
+
+
+GREAT I just forgot the most important thing...
+You need to AUTHENTICATE your 2 servers.
+ON the server with THIS script installed login to THIS user's account.
+aka
+ssh mywebserver.vps.com -l www-data
+
+www-data,root,apache2,I don't know what your username is.
+There may be some PHP scripts to check what username it's running under, let me google that for you...
+
+<?php echo exec('whoami'); ?>
+
+BAM just like that
+Google fkn foo.
+Okay, so you find out what your username is and you ssh into it.
+This has to be your VPS, not some webhosting company (unless its cpanel, and if you ask nicely, maybe...)
+It should work on a jailed ssh shell (for those of you with cpanel).
+
+su www-data (or w/e your whoami username is for the website)
+ssh-keygen
+
+
+There, now you have generate the keys for your site.
+You will now need to do:
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub vpsIPthatwillbeaddedlater
+
+You'll have to do that to each vps that you add :)
+This allows the safety of your script to have access to your vps only without the need of passwords.
+Scarry, huh? ;)
+
+okay i'm tired for now....
+I'll write the rest of this another time...
+_______________________________
