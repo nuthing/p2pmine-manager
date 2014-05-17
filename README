@@ -1,68 +1,42 @@
-Created for http://p2pmine.com
-
-Warning, this code is horrible and I know that. I've been having trouble focusing lately
-and coding was my favorite way to get things done. As you can tell, the code is pieced
-together like a puzzle. I've got some crazy stuff I'd like to do with this code, so
-hopefully I can get it into the hands of the people to make better. :)
-
-
-To start things off, we might need a litle organization. How about, a LIST?
-Hrm...what kind of list.
-Let's make it... like this..
-
-Table of Contents:
- []> Madness
- []> Table of Me lol &slap## ((*cough*)Contents
- []> Some things to do about the project, I dunno...
-
-Okay, well that didn't work. Let's just start by saying.
+Where is the first place I should look to get help?
+	
+	IRC, IRC, IRC...
+	I can't stress this enough. You will find me (or someone will be able to find me) and get help.
+	
+	I can't get YOUR help, where else can I look?
+	Hopefully someone will be nice enough to start support in other area's, but for now IRC is your best bet.
+	
+	Okay, IRC...where at?
+	
+	irc.freenode.net #p2pmine
+	
+	-or-
+	
+	http://p2pmine.com/chat.html
 
 
-Ubuntu 12.04 LTS
+Possibly Imporant Documents---
+http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/
 
-Yeah, that should be obvious to anyone scrolling through the messed up words. So, why not use
-14.04 LTS? I dunno, it doesn't work. Try it, create a tissue (tissue? issue? comment?) reply..
-So, with Ubuntu 12.04 I used a little bit of MySQL and PHP magic wizard skills and created...
-THIS.
-I mean, the other pages.
-My vision is to add some features, let's see what we can do.
-[~_++++]
-{}> CronJobs
-  {.}> Watchdog (auto-start)
-  {.}> Cache Clear (auto-reinstall after N of shares to keep services fast)
-{}> fix checker 
-{}> actually check the GET/POST inputs instead of just using them. (i know people, calm down. I just needed the main processes coded)
+With all the other features currently being added, I don't have a lot of extra time to code in things that arn't directly important to me.
+tl;dr I code shortcuts for myself.
+
+I don't mind, however, taking extra time to code functions that are usefull to others. If this is something you'd like to see...request it!
 
 
-GREAT I just forgot the most important thing...
-You need to AUTHENTICATE your 2 servers.
-ON the server with THIS script installed login to THIS user's account.
-aka
-ssh mywebserver.vps.com -l www-data
-
-www-data,root,apache2,I don't know what your username is.
-There may be some PHP scripts to check what username it's running under, let me google that for you...
-
-<?php echo exec('whoami'); ?>
-
-BAM just like that
-Google fkn foo.
-Okay, so you find out what your username is and you ssh into it.
-This has to be your VPS, not some webhosting company (unless its cpanel, and if you ask nicely, maybe...)
-It should work on a jailed ssh shell (for those of you with cpanel).
-
-su www-data (or w/e your whoami username is for the website)
-ssh-keygen
+I do need lots of help creating a proper README.
 
 
-There, now you have generate the keys for your site.
-You will now need to do:
+-- for CODE input ---
+I am a strange coder.
+I code out in large repetative code (currently being slimmed), see what's broken,  clean up the code, build it into portable functions or a proper class structure, then tie api handler into it.
+Yeah, that's right...you can manage this bad kitty from any device.
+Including that OLD flipphone from 2001 that had the killer MIDI tunes, yeah...it had a web browser. Where else do you think you got your ringtones. ;) Anyways...yeah, that baby will eventually be supported.
+I've got LOADS more to offer for this project, INCLUDING...
+cronjobs (so you dont actually have to wait for the code to compile...)
+^they will also help with page loads....greatly
 
-ssh-copy-id -i ~/.ssh/id_rsa.pub vpsIPthatwillbeaddedlater
 
-You'll have to do that to each vps that you add :)
-This allows the safety of your script to have access to your vps only without the need of passwords.
-Scarry, huh? ;)
-
-okay i'm tired for now....
-I'll write the rest of this another time...
+vvvvvv These features will take a few weeks to support. I've got a lot of other features that have to be added first.
+In the WAY WAY future, I'd love to support Amazon Cloud VPS.
+I would also love to tie into cloudflare's API to auto-apply coin symbols for subdomains to your domains.
