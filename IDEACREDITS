@@ -1,0 +1,7 @@
+[idea'er]  -  [added_yet?]  -   [idea]
+----------------------------------------
+hitlurcat - yes - start/stop/restart for coind/p2pool instances
+hitlurcat - no - cronjobs (wallet backups)
+ngkp - in progress - FTP coin daemon grabber (instead of compiling for each install)
+ngkp - no - clear cache for p2pool (for when shares get too many and boggs down the server)
+ngkp - no - cronjob autoinstalls (will be coded after the ftp coin daemon grabber)
