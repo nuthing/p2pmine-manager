@@ -1,0 +1,45 @@
+#DISCLAIMER!!!!!!!!!!!!!!!!!!
+#The following code is untested, unfinished, and may not produce expected or desired results. As such run this code at your own discretion
+#I can not be held responsible if it breaks, or deletes your wallets, or dumps your privkeys to my email,
+#Or sacrifices your firstborn child to the volcano gods of Anonymous Island. You read the code, you ran it. Your problem.
+#It was also coded in the wee hours of the morning while half asleep be forgiving of shitty code or errors xD
+
+#runonce backup_setup script
+#create directory to store backups
+mkdir walletbackups 
+#chmod directory
+chmod 755 walletbackups 
+#get current crontab
+crontab -l > tmpcron
+#append new cron
+echo "0 1 * * * walletbackup.sh >/dev/null 2>&1" #run walletbackup.sh at 00:00 daily
+#Install the new cron
+crontab tmpcron
+#remove the temporary cron
+rm tmpcron
+#End of backup_setup script
+
+#########################WALLETBACKUP.SH######################################
+#!/bin/bash
+#Notify User backup script has started
+function backupstart {
+echo "Wallet backup process started at:"
+date +"%A, %B %-d, %Y"
+}
+#Copy wallet.dat, append date(may not be needed, is here to avoid overwrites currently)
+cp .dogecoin/wallet.dat walletbackups/dogewallet_$(date +%m%d%y).dat
+cp .litecoin/wallet.dat walletbackups/ltcwallet_$(date +%m%d%y).dat
+cp .potcoin/wallet.dat walletbackups/potwallet_$(date +%m%d%y).dat
+cp .smartcoin/wallet.dat walletbackups/smcwallet_$(date +%m%d%y).dat
+#More will/can be added following the same format depending on users needs
+
+#########################################################################
+#below waits for task to complete before exiting script
+{ sleep 5; echo Please wait... 5 seconds; } &
+{ sleep 1; echo Finalizing... 1 second; } &
+wait
+echo Wallet backups have finished, please check the 'walletbackups' folder!
+#if any job daemonizes this breaks, shell will think the job process is already done
+
+#created by: hitlurcat for p2pmine.com
+#sorry ngkp more code cleanup for ya <3 ya bro!
