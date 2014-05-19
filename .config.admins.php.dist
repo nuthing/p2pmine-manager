@@ -1,0 +1,21 @@
+<?php
+$auth_salt = "e13d7afb35fd988d451fff734ccd2a94"; // &salt=s0m3thingR4nd0m      (in URI)
+$auth['admin'] = "1d73989192ca2200f58ef120245a210bf875fb6f";
+//$auth['MyUsername'] = "myencryptedpassword000000000"; //you can add as many users as you'd like
+
+
+$db['host'] = "localhost";
+$db['name'] = "p2pmine_manager";
+$db['user'] = "";
+$db['pass'] = "";
+
+$sshkey_location = $_ENV['HOME']."/.ssh/id_rsa";
+
+//until I get time to code it into the site, please use
+//    http://p2pmine.com/tools/?callback=genManagerAuth&salt=s0m3thingR4nd0m&string=YourPasswordHere
+
+//method = sha1(md5(md5($_GET['salt']).sha1($_GET['string'])));
+
+
+//WUT this file should be nammed this or that...
+//well shit, I can't do everything okay. I'm only one person :(
