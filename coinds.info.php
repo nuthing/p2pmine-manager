@@ -25,12 +25,22 @@ $binfo = $bitcoin->getinfo();
   <tr><td>username</td><td><?=$row[1];?></td></tr>
   <tr><td>executablefile</td><td><?=$row[2];?></td></tr>
   <tr><td>templateid</td><td><?=$row[0];?></td></tr>
-  <tr><td>publicipp2p</td><td><?=$row[4];?></td></tr>
-  <tr><td>privateiprpc</td><td><?=$row[6];?></td></tr>
-  <tr><td>portp2p</td><td><?=$row[5];?></td></tr>
-  <tr><td>portrpc</td><td><?=$row[7];?></td></tr>
+  <tr><td>p2p</td><td><?=$row[4].':'.$row[5];?></td></tr>
+  <tr><td>rpc</td><td><?=$row[6].':'.$row[7];?></td></tr>
   <tr><td>serverid</td><td><?=$row[8];?></td></tr>
-  <? foreach($binfo as $bkey=>$bvalue){ if(strlen($bvalue)>0){ echo "<tr><td>".$bkey."</td><td>".$bvalue."</td></tr>"; } } ?>
+  <? foreach($binfo as $bkey=>$bvalue){ 
+      if(strlen($bvalue)>0){ 
+        echo "<tr><td>".$bkey."</td><td>"; 
+        if($bkey=="blocks"){ 
+          echo "<b>"; 
+        } 
+        echo $bvalue; 
+        if($bkey=="blocks"){ 
+          echo "</b>"; 
+        } 
+        echo "</td></tr>"; 
+        } 
+      } ?>
   <? if(isset($_GET['auth'])){ echo "<tr><td>rpcuser</td><td>".$row[9]."</td></tr>"; } ?>
   <? if(isset($_GET['auth'])){ echo "<tr><td>rpcpassword</td><td>".$row[10]."</td></tr>"; } ?>
 </table>

@@ -37,9 +37,9 @@ while($row = mysqli_fetch_array($result)) {
     $debug[]['ssh'] = "SSH Login Failed!";
   } else {  
     $debug[$rows]['pid'] = $ssh->exec('cat /home/'.$row['username'].'/.'.$row['coinname'].'/'.$row['coind'].'.pid');
+      echo "[ <a href=coinds.info.php?id=".$row['id'].">Info</a> ]";
     if($debug[$rows]['pid']>0){ 
-      echo "[ <a href=coinds.info.php?id=".$row['id'].">Info</a> ]<br>";
-      echo "[ <a href=coinds.ioflip.php?id=".$row['id']."&type=stop>Stop</a> |";
+      echo "<br>[ <a href=coinds.ioflip.php?id=".$row['id']."&type=stop>Stop</a> |";
       echo " <a href=coinds.ioflip.php?id=".$row['id']."&type=restart>Restart</a> ]";
     } else {
       echo "<br>[ <a href=coinds.ioflip.php?id=".$row['id']."&type=start>Start</a> ]";
