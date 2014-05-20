@@ -1,0 +1,110 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.8
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: May 19, 2014 at 10:18 PM
+-- Server version: 5.1.73-cll
+-- PHP Version: 5.4.23
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `p2pmine_manager`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coind_instances`
+--
+
+CREATE TABLE IF NOT EXISTS `coind_instances` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `templateid` int(5) NOT NULL,
+  `serverid` int(5) NOT NULL,
+  `username` varchar(255) NOT NULL COMMENT 'potcoin',
+  `coinname` varchar(255) NOT NULL,
+  `coind` varchar(255) NOT NULL COMMENT 'potcoind',
+  `ip_p2p` varchar(255) NOT NULL,
+  `port_p2p` int(6) NOT NULL,
+  `ip_rpc` varchar(255) NOT NULL,
+  `port_rpc` int(6) NOT NULL,
+  `rpc_user` varchar(255) NOT NULL,
+  `rpc_password` varchar(255) NOT NULL,
+  `rpcallowips` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coind_templates`
+--
+
+CREATE TABLE IF NOT EXISTS `coind_templates` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `coind` varchar(255) NOT NULL,
+  `gitsrc` text NOT NULL,
+  `cd_gitsrc` varchar(255) NOT NULL,
+  `port_p2p` int(6) NOT NULL,
+  `port_rpc` int(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p2pool_instances`
+--
+
+CREATE TABLE IF NOT EXISTS `p2pool_instances` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `serverid` int(5) NOT NULL,
+  `coindid` int(5) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `hostname` varchar(255) NOT NULL,
+  `port_p2p` int(6) NOT NULL,
+  `port_worker` int(6) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `templateid` int(5) NOT NULL,
+  `fee` float NOT NULL,
+  `donationfee` float NOT NULL,
+  `nodes` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `p2pool_templates`
+--
+
+CREATE TABLE IF NOT EXISTS `p2pool_templates` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `named` varchar(255) NOT NULL,
+  `module` varchar(255) NOT NULL,
+  `gitsrc` text NOT NULL,
+  `port_p2p` int(6) NOT NULL,
+  `port_worker` int(6) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `servers`
+--
+
+CREATE TABLE IF NOT EXISTS `servers` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `ip` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
