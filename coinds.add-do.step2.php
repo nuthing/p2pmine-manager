@@ -64,7 +64,9 @@ if (!$ssh->login('root', $key)) {
   
   $debug['step'][] = "user created...";
 
-  $debug['mkdir_coinname'] = $ssh->exec('mkdir /home/'.$_POST['username'].'/.'.$coindinfo['name']);
+  $coinfix = substr($coindinfo['coind'], 0, -1);
+  
+  $debug['mkdir_coinname'] = $ssh->exec('mkdir /home/'.$_POST['username'].'/.'.$coinfix);
   
   $debug['step'][] = "created coind config directory...";
 
@@ -84,11 +86,11 @@ if (!$ssh->login('root', $key)) {
   //latter check if we have other coinds running, if so...add those as nodes
   
   //now submit it
-  $debug['mkdir_coinname'] = $ssh->exec('printf "'.$coinconfig.'" >> /home/'.$_POST['username'].'/.'.$coindinfo['name'].'/'.$coindinfo['name'].'.conf');
+  $debug['mkdir_coinname'] = $ssh->exec('printf "'.$coinconfig.'" >> /home/'.$_POST['username'].'/.'.$coinfix.'/'.$coinfix.'.conf');
   
   $debug['step'][] = "created & saved config file...";
 
-  $debug['chown_coinddir'] = $ssh->exec('chown -R '.$_POST['username'].' /home/'.$_POST['username'].'/.'.$coindinfo['name']);
+  $debug['chown_coinddir'] = $ssh->exec('chown -R '.$_POST['username'].' /home/'.$_POST['username'].'/.'.$coinfix);
   
   $debug['step'][] = "chown'ed directory & .conf file...";
   

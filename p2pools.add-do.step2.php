@@ -11,7 +11,7 @@ if (mysqli_connect_errno()) {
   $debug['mysql_error'] = mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT coinname,ip_p2p,port_p2p,port_rpc,rpc_user,rpc_password FROM coind_instances WHERE id='".$_POST['coindid']."'");
+$result = mysqli_query($con,"SELECT coinname,ip_p2p,port_p2p,port_rpc,rpc_user,rpc_password,templateid FROM coind_instances WHERE id='".$_POST['coindid']."'");
 $coininfo = mysqli_fetch_row($result);
 $coininfo['coinname'] = $coininfo[0];
 $coininfo['ip_p2p'] = $coininfo[1];
@@ -19,6 +19,12 @@ $coininfo['port_p2p'] = $coininfo[2];
 $coininfo['port_rpc'] = $coininfo[3];
 $coininfo['rpc_user'] = $coininfo[4];
 $coininfo['rpc_password'] = $coininfo[5];
+$coininfo['templateid'] = $coininfo[6];
+
+$result = mysqli_query($con, "SELECT coind FROM coind_templates WHERE id='".$coininfo['templateid']."'");
+$template = mysqli_fetch_row($result);
+
+$template['coind'] = $template[0];
 
 $result = mysqli_query($con,"SELECT name,named,gitsrc,port_p2p,port_worker FROM p2pool_templates WHERE id='".$_POST['templateid']."'");
 $info = mysqli_fetch_row($result);
@@ -72,7 +78,9 @@ if (!$ssh->login('root', $key)) {
   
   $debug['step'][] = "user created...";
 
-  $debug['mkdir_coinname'] = $ssh->exec('mkdir /home/'.$_POST['username'].'/.'.$info['name']);
+  $coinfix = substr($template['coind'], 0, -1);
+  
+  $debug['mkdir_coinname'] = $ssh->exec('mkdir /home/'.$_POST['username'].'/.'.$coinfix);
   
   $debug['step'][] = "created coind config directory...";
 
@@ -87,11 +95,11 @@ if (!$ssh->login('root', $key)) {
   //latter check if we have other coinds running, if so...add those as nodes
   
   //now submit it
-  $debug['mkdir_coinname'] = $ssh->exec('printf "'.$coinconfig.'" >> /home/'.$_POST['username'].'/.'.$info['name'].'/'.$info['name'].'.conf');
+  $debug['mkdir_coinname'] = $ssh->exec('printf "'.$coinconfig.'" >> /home/'.$_POST['username'].'/.'.$coinfix.'/'.$coinfix.'.conf');
   
   $debug['step'][] = "created & saved config file...";
 
-  $debug['chown_coinddir'] = $ssh->exec('chown -R '.$_POST['username'].' /home/'.$_POST['username'].'/.'.$info['name']);
+  $debug['chown_coinddir'] = $ssh->exec('chown -R '.$_POST['username'].' /home/'.$_POST['username'].'/.'.$coinfix);
   
   $debug['step'][] = "chown'ed directory & .conf file...";
   

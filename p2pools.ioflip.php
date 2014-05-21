@@ -92,6 +92,7 @@ if (!$ssh->login('root', $key)) {
     $cmd .= " --bitcoind-address ".$info[1];
     $cmd .= " --p2pool-port ".$info0['port_p2p'];
     $cmd .= " --worker-port ".$info0['port_worker'];
+    echo $cmd.'<br>';
     $debug['exec_service'] = $ssh->exec('su -c "'.$cmd.'" -s /bin/sh '.$info0['username'],'packet_handler');
     
     echo "Daemon restarted";
@@ -129,6 +130,7 @@ if (!$ssh->login('root', $key)) {
     $cmd .= " --bitcoind-address ".$info[1];
     $cmd .= " --p2pool-port ".$info0['port_p2p'];
     $cmd .= " --worker-port ".$info0['port_worker'];
+    echo $cmd.'<br>';
     $debug['exec_service'] = $ssh->exec('su -c "'.$cmd.'" -s /bin/sh '.$info0['username'],'packet_handler');
       
     
