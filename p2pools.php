@@ -21,6 +21,7 @@ while($row = mysqli_fetch_array($result)) {
   $result3 = mysqli_query($con,"SELECT ip FROM servers WHERE id='".$row['serverid']."'");
   $serverinfo = mysqli_fetch_row($result3);
   echo "<td>";
+  echo "[ <a href=p2pools.theme.php?id=".$row['id'].">Theme</a> ]<br>";
   echo "[ <a href=p2pools.remove.php?id=".$row['id'].">Remove</a> ]";
   //log into server.,
   $ssh = new Net_SSH2($serverinfo[0]);

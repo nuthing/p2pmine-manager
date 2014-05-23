@@ -9,10 +9,9 @@ if (mysqli_connect_errno()) {
   $error[] = "Failed to connect to MySQL";
   $debug[] = mysqli_connect_error();
 }
-$result = mysqli_query($con,"SELECT id FROM `coind_instances` ORDER BY id DESC LIMIT 1");
-$return = mysqli_fetch_row($result);
-$id = $return[0]+1;
-
+$result = mysqli_query($con,"SHOW TABLE STATUS LIKE 'coind_instances'");
+$row = mysqli_fetch_array($result);
+$id = $row['Auto_increment']; 
 
 echo "<form action=coinds.add-do.step2.php method=post>";
 

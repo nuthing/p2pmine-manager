@@ -21,7 +21,7 @@ $result = mysqli_query($con,"SELECT id,name,ip FROM servers");
 $rowsSERVER = 0;
 echo "<table border=1><caption>Choose Server</cpation><tr><td colspan=2>Name</td><td>IP</td><td>{Functions}</td></tr>";
 while($row = mysqli_fetch_array($result)) {
-  echo "<tr><td><input type=radio name=serverid value='".$row['id']."' /><td>".$row['name']."<td>".$row['ip']."</td><td>[<a href=servers.php>Status</a>]</td></tr>";
+  echo "<tr><td><input type=radio name=serverid value='".$row['id']."' /><td>".$row['name']."</td><td>".$row['ip']."</td><td>[<a href=servers.php>Status</a>]</td></tr>";
   ++$rowsSERVER;
 }
 if($rowsSERVER<=0){

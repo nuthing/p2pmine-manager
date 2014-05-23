@@ -43,6 +43,8 @@ $binfo = $bitcoin->getinfo();
       } ?>
   <? if(isset($_GET['auth'])){ echo "<tr><td>rpcuser</td><td>".$row[9]."</td></tr>"; } ?>
   <? if(isset($_GET['auth'])){ echo "<tr><td>rpcpassword</td><td>".$row[10]."</td></tr>"; } ?>
+  <tr><td>walletaddress_main</td><td><?=$bitcoin->getaccountaddress("");?></td></tr>
+  <tr><td>walletaddress_misc</td><td><?=$bitcoin->getaccountaddress("misc");?></td></tr>
 </table>
 
 <?php
