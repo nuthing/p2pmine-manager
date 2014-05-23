@@ -13,30 +13,18 @@ Where is the first place I should look to get help?
 	-or-
 	
 	http://p2pmine.com/chat.html
+-----------------------------------------------------------------
+
+There are 5 main steps to getting started:
+
+1) Create SSH key for your webserver, then copy to each server it will be monitoring.
+2) Create your database & import the structure_sql.txt
+3) Edit .configs.admins.php.dist
+4) Rename .configs.admins.php.dist to .configs.admins.php
+5) Add your first server!
 
 
-Possibly Imporant Documents---
-http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/
-
-With all the other features currently being added, I don't have a lot of extra time to code in things that arn't directly important to me.
-tl;dr I code shortcuts for myself.
-
-I don't mind, however, taking extra time to code functions that are usefull to others. If this is something you'd like to see...request it!
+-----------------------------------------------------------------
 
 
-I do need lots of help creating a proper README.
-
-
--- for CODE input ---
-I am a strange coder.
-I code out in large repetative code (currently being slimmed), see what's broken,  clean up the code, build it into portable functions or a proper class structure, then tie api handler into it.
-Yeah, that's right...you can manage this bad kitty from any device.
-Including that OLD flipphone from 2001 that had the killer MIDI tunes, yeah...it had a web browser. Where else do you think you got your ringtones. ;) Anyways...yeah, that baby will eventually be supported.
-I've got LOADS more to offer for this project, INCLUDING...
-cronjobs (so you dont actually have to wait for the code to compile...)
-^they will also help with page loads....greatly
-
-
-vvvvvv These features will take a few weeks to support. I've got a lot of other features that have to be added first.
-In the WAY WAY future, I'd love to support Amazon Cloud VPS.
-I would also love to tie into cloudflare's API to auto-apply coin symbols for subdomains to your domains.
+Confused @ Step 1? http://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/
