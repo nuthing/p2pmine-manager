@@ -22,4 +22,4 @@ mysqli_close($con);
 print_r($message);
 print_r($debug);
 ?>
-<a href=/manager/p2pools.theme.php>go back</a>
+<a href=/manager/p2pools.php>go back</a>

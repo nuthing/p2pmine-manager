@@ -33,7 +33,9 @@ $key->loadKey(file_get_contents($sshkey_location));
 if (!$ssh->login('root', $key)) {
   $debug[] = "SSH Login Failed!";
 } else {
-  $debug['rm_old_files'] = $ssh->exec('cd /home/'.$info['username'].'/sauce/web-static/;rm -rf *');
+  $debug['rm_web-static'] = $ssh->exec('cd /home/'.$info['username'].'/sauce/;rm -rf web-static');
+  
+  $debug['make_web-static'] = $ssh->exec('cd /home/'.$info['username'].'/sauce/;mkdir web-static');
   
   $debug['git_new'] = $ssh->exec('cd /home/'.$info['username'].'/sauce/web-static/;git clone '.$theme['gitsrc'].' .');
   
